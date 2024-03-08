@@ -1,8 +1,4 @@
-import type {
-  InferGetStaticPropsType,
-  GetStaticProps,
-  GetStaticPaths,
-} from 'next'
+import type { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next'
 
 const USER_AGENT = {
   PC: 'PC',
@@ -37,8 +33,6 @@ export const getStaticProps = (async (context) => {
   userAgent: UserAgent
 }>
 
-export default function Page({
-  userAgent,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page({ userAgent }: InferGetStaticPropsType<typeof getStaticProps>) {
   return <div>{userAgent}</div>
 }
