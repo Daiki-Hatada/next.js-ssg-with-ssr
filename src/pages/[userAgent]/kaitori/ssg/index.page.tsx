@@ -1,5 +1,7 @@
-import { UserAgent, isUserAgent } from '../../utils/userAgent'
 import type { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next'
+import { MobilePage } from './components/MobilePage'
+import { DesktopPage } from './components/DesktopPage'
+import { UserAgent, isUserAgent } from '../../../../utils/userAgent'
 
 export const getStaticPaths = (async () => {
   return {
@@ -28,5 +30,7 @@ export const getStaticProps = (async (context) => {
 }>
 
 export default function Page({ userAgent }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <div>{userAgent}</div>
+  if (userAgent === 'SP') return <MobilePage />
+  if (userAgent === 'PC') return <DesktopPage />
+  return null
 }

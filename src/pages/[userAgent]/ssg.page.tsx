@@ -1,11 +1,5 @@
+import { UserAgent, isUserAgent } from '../../utils/userAgent'
 import type { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next'
-
-const USER_AGENT = {
-  PC: 'PC',
-  SP: 'SP',
-} as const
-type UserAgent = keyof typeof USER_AGENT
-const isUserAgent = (value: unknown): value is UserAgent => Object.values(USER_AGENT).includes(value as UserAgent)
 
 export const getStaticPaths = (async () => {
   return {

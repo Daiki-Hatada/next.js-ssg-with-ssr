@@ -1,5 +1,7 @@
-import { UserAgent, isUserAgent } from '../../utils/userAgent'
+import { UserAgent, isUserAgent } from '../../../../utils/userAgent'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+import { MobilePage } from '../ssg/components/MobilePage'
+import { DesktopPage } from '../ssg/components/DesktopPage'
 
 export const getServerSideProps = (async (context) => {
   const userAgent = context.params?.userAgent
@@ -8,5 +10,7 @@ export const getServerSideProps = (async (context) => {
 }) satisfies GetServerSideProps<{ userAgent: UserAgent }>
 
 export default function Page({ userAgent }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <div>{userAgent}</div>
+  if (userAgent === 'SP') return <MobilePage />
+  if (userAgent === 'PC') return <DesktopPage />
+  return null
 }
