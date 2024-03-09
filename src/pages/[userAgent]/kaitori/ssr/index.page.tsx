@@ -1,7 +1,7 @@
 import { UserAgent, isUserAgent } from '../../../../utils/userAgent'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import { MobilePage } from '../ssg/components/MobilePage'
-import { DesktopPage } from '../ssg/components/DesktopPage'
+import { MobilePage } from './components/MobilePage'
+import { DesktopPage } from './components/DesktopPage'
 
 export const getServerSideProps = (async (context) => {
   const userAgent = context.params?.userAgent
